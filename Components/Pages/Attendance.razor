@@ -1,0 +1,34 @@
+@page "/attendance"
+@inject EventEase.Services.UserSessionState Session
+
+<h1>Attendance Tracker</h1>
+
+<p>Attendance is saved for this session only and resets on refresh.</p>
+
+@if (Session.Registrations.Count == 0)
+{
+    <p>No registrations yet. <a href="/register">Register for an event</a>.</p>
+}
+else
+{
+    <p>Participant: @Session.Name</p>
+    <p role="status">
+        Attended: @Session.Registrations.Count(entry => entry.Attended)
+        / @Session.Registrations.Count
+    </p>
+
+    <ul class="list-unstyled">
+        @foreach (var entry in Session.Registrations)
+        {
+            <li @key="entry.EventName" class="mb-2">
+                <label>
+                    <input type="checkbox" @bind="entry.Attended" />
+                    @entry.EventName — attended
+                </label>
+            </li>
+        }
+    </ul>
+}
+
+<p><a href="/register">Registration</a></p>
+<p><a href="/events">Back to Events</a></p>

@@ -1,0 +1,36 @@
+@page "/event-details"
+@page "/event-details/{EventId:int}"
+@using EventEase.Services
+
+<h1>Event Details</h1>
+
+@if (selectedEvent is not null)
+{
+	<h2>@selectedEvent.Name</h2>
+
+	<p><strong>Date:</strong> @selectedEvent.Date</p>
+
+	<p><strong>Location:</strong> @selectedEvent.Location</p>
+
+	<p>@selectedEvent.Description</p>
+
+	<a href="@($"/register/{selectedEvent.Id}")">Register for this event</a>
+}
+else
+{
+	<p>@(EventId.HasValue ? "Event not found." : "Please select an event.")</p>
+}
+
+<p class="mt-3"><a href="/events">Back to Events</a></p>
+
+@code {
+	[Parameter]
+	public int? EventId { get; set; }
+
+	private EventItem? selectedEvent;
+
+	protected override void OnParametersSet()
+	{
+		selectedEvent = EventCatalog.Find(EventId);
+	}
+}

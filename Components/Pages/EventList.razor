@@ -1,0 +1,19 @@
+@page "/events"
+@using EventEase.Services
+
+<h1>Events</h1>
+
+<p>Browse our upcoming events.</p>
+
+@foreach (var eventItem in EventCatalog.Events)
+{
+    <div @key="eventItem.Id" class="mb-4">
+    <EventCard
+        EventName="@eventItem.Name"
+        EventDate="@eventItem.Date"
+        EventLocation="@eventItem.Location" />
+
+    <a href="@($"/event-details/{eventItem.Id}")">View Details</a>
+    <a href="@($"/register/{eventItem.Id}")" class="ms-3">Register</a>
+</div>
+}

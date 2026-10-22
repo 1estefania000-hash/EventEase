@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "CNUZWUVjoLs=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\estef\\Documents\\EventEase\\EventEase.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\estef\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.13\\microsoft.aspnetcore.app.internal.assets.10.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}
